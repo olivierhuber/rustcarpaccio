@@ -14,8 +14,11 @@ fn main() {
     let state = state.trim().to_uppercase();
 
     let tax: f64 = match state.as_str() {
-        "CA" => 8.25,
+        "UT" => 6.85,
+        "NV" => 8.00,
         "TX" => 6.25,
+        "AL" => 4.00,
+        "CA" => 8.25,
         _ => panic!("Unknown state code {state}")
     };
 
