@@ -3,7 +3,23 @@ use std::io;
 fn main() {
     println!("Welcome to the GoodSell Hardware-store!");
 
-    println!("You are buying from our California store!");
+    println!("Please enter your 2-letter state code?");
+
+    let mut state = String::new();
+
+    io::stdin()
+        .read_line(&mut state)
+        .expect("Failed to read line");
+
+    let state = state.trim().to_uppercase();
+
+    let tax: f64 = match state.as_str() {
+        "CA" => 8.25,
+        "TX" => 6.25,
+        _ => panic!("Unknown state code {state}")
+    };
+
+    println!("Welcome to our {} store! State tax is {}%", state, tax);
 
     println!("Please enter the item price?");
 
@@ -25,8 +41,7 @@ fn main() {
 
     let items: u32 = items.trim().parse().expect("Please type a number!");
 
-    const CA_TAX_RATE: f64 = 8.25;
-    let total_price: f64 = items as f64 * price * (1.0 + CA_TAX_RATE/100.0);
+    let total_price: f64 = items as f64 * price * (1.0 + tax/100.0);
 
     println!("This will cost you ${total_price:.2}");
 }
