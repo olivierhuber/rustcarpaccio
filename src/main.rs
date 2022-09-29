@@ -19,7 +19,7 @@ fn main() {
         _ => panic!("Unknown state code {state}")
     };
 
-    println!("Welcome to our {} store! State tax is {}%", state, tax);
+    println!("Welcome to our {state} store! State tax is {tax:.2}%");
 
     println!("Please enter the item price?");
 
@@ -41,7 +41,17 @@ fn main() {
 
     let items: u32 = items.trim().parse().expect("Please type a number!");
 
-    let total_price: f64 = items as f64 * price * (1.0 + tax/100.0);
+    let total_price: f64 = items as f64 * price;
+
+    let mut discount: f64 = 0.0;
+
+    if total_price > 50_000.0 {
+        discount = 15.0;
+    }
+
+    let discounted_price: f64 = total_price * (1.0 - discount/100.0);
+
+    let total_price = discounted_price * (1.0 + tax/100.0);
 
     println!("This will cost you ${total_price:.2}");
 }
