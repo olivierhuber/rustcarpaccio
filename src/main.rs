@@ -50,6 +50,12 @@ fn main() {
 
     if total_price > 50_000.0 {
         discount = 15.0;
+    } else if total_price > 10_000.0 {
+        discount = 10.0;
+    } else if total_price > 7_000.0 {
+        discount = 7.0;
+    } else if total_price > 5_000.0 {
+        discount = 5.0;
     } else if total_price > 1_000.0 {
         discount = 3.0;
     }
