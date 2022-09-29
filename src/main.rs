@@ -47,6 +47,8 @@ fn main() {
 
     if total_price > 50_000.0 {
         discount = 15.0;
+    } else if total_price > 1_000.0 {
+        discount = 3.0;
     }
 
     let discounted_price: f64 = total_price * (1.0 - discount/100.0);
