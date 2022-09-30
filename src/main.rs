@@ -46,19 +46,19 @@ fn main() {
 
     let total_price: f64 = items as f64 * price;
 
-    let mut discount: f64 = 0.0;
-
-    if total_price > 50_000.0 {
-        discount = 15.0;
+    let discount = if total_price > 50_000.0 {
+        15.0
     } else if total_price > 10_000.0 {
-        discount = 10.0;
+        10.0
     } else if total_price > 7_000.0 {
-        discount = 7.0;
+        7.0
     } else if total_price > 5_000.0 {
-        discount = 5.0;
+        5.0
     } else if total_price > 1_000.0 {
-        discount = 3.0;
-    }
+        3.0
+    } else {
+        0.0
+    };
 
     let discounted_price: f64 = total_price * (1.0 - discount/100.0);
 
